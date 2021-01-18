@@ -1,5 +1,8 @@
 package com.github.alexyekymov.cvdb;
 
+import com.github.alexyekymov.cvdb.model.Resume;
+import com.github.alexyekymov.cvdb.storage.ArrayStorage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,7 +14,7 @@ public class MainArray {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Resume resume;
         while (true) {
-            System.out.println("Enter one of the command - (list | save uuid | delete uuid | clear | exit): ");
+            System.out.println("Enter one of the command - (list | save uuid | delete uuid | get uuid | update uuid | clear | exit): ");
             String[] params = reader.readLine().trim().toLowerCase().split(" ");
             if (params.length < 1 || params.length > 2) {
                 System.out.println("Wrong command");
@@ -30,8 +33,14 @@ public class MainArray {
                     break;
                 case "save":
                     resume = new Resume();
-                    resume.uuid = uuid;
+                    resume.setUuid(uuid);
                     ARRAY_STORAGE.save(resume);
+                    printAll();
+                    break;
+                case "update":
+                    resume = new Resume();
+                    resume.setUuid(uuid);
+                    ARRAY_STORAGE.update(resume);
                     printAll();
                     break;
                 case "delete":
