@@ -4,11 +4,7 @@ import com.github.alexyekymov.cvdb.model.Resume;
 
 import java.util.Arrays;
 
-public class ArrayStorage implements Storage {
-    public static final int STORAGE_LIMIT = 10000;
-
-    Resume[] storage = new Resume[STORAGE_LIMIT];
-    int size = 0;
+public class ArrayStorage extends AbstractArrayStorage {
 
     @Override
     public void clear() {
@@ -39,16 +35,6 @@ public class ArrayStorage implements Storage {
     }
 
     @Override
-    public Resume get(String uuid) {
-        int index = getIndex(uuid);
-        if (index == -1) {
-            System.out.println("Resume " + uuid + " not exist");
-            return null;
-        }
-        return storage[index];
-    }
-
-    @Override
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
@@ -66,11 +52,7 @@ public class ArrayStorage implements Storage {
     }
 
     @Override
-    public int size() {
-        return size;
-    }
-
-    private int getIndex(String uuid) {
+    protected int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].toString().equals(uuid)) {
                 return i;
