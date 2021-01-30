@@ -4,17 +4,19 @@ import com.github.alexyekymov.cvdb.model.Resume;
 
 import java.util.Arrays;
 
-public class ArrayStorage {
+public class ArrayStorage implements Storage {
     public static final int STORAGE_LIMIT = 10000;
 
     Resume[] storage = new Resume[STORAGE_LIMIT];
     int size = 0;
 
+    @Override
     public void clear() {
         Arrays.fill(storage,0, size, null);
         size = 0;
     }
 
+    @Override
     public void update(Resume resume) {
         int index = getIndex(resume.getUuid());
         if (index == -1) {
@@ -24,6 +26,7 @@ public class ArrayStorage {
         }
     }
 
+    @Override
     public void save(Resume resume) {
         if (getIndex(resume.getUuid()) != -1) {
             System.out.println("Resume " + resume.getUuid() + " already exist");
@@ -35,6 +38,7 @@ public class ArrayStorage {
         }
     }
 
+    @Override
     public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
@@ -44,6 +48,7 @@ public class ArrayStorage {
         return storage[index];
     }
 
+    @Override
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
@@ -55,10 +60,12 @@ public class ArrayStorage {
         }
     }
 
+    @Override
     public Resume[] getAll() {
         return Arrays.copyOf(storage, size);
     }
 
+    @Override
     public int size() {
         return size;
     }
