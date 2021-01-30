@@ -5,7 +5,9 @@ import com.github.alexyekymov.cvdb.model.Resume;
 import java.util.Arrays;
 
 public class ArrayStorage {
-    Resume[] storage = new Resume[10000];
+    public static final int STORAGE_LIMIT = 10000;
+
+    Resume[] storage = new Resume[STORAGE_LIMIT];
     int size = 0;
 
     public void clear() {
@@ -25,7 +27,7 @@ public class ArrayStorage {
     public void save(Resume resume) {
         if (getIndex(resume.getUuid()) != -1) {
             System.out.println("Resume " + resume.getUuid() + " already exist");
-        } else if (size >= storage.length) {
+        } else if (size >= STORAGE_LIMIT) {
             System.out.println("Storage overflow");
         } else {
             storage[size] = resume;
