@@ -69,9 +69,9 @@ public abstract class AbstractArrayStorage implements Storage {
         return storage[index];
     }
 
-    abstract void fillDeletedElement(int index);
+    protected abstract void fillDeletedElement(int index);
 
-    abstract void insertElement(Resume resume, int index);
+    protected abstract void insertElement(Resume resume, int index);
 
     protected abstract int getIndex(String uuid);
 }
