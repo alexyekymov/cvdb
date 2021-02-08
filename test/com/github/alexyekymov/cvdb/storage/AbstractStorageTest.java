@@ -2,16 +2,14 @@ package com.github.alexyekymov.cvdb.storage;
 
 import com.github.alexyekymov.cvdb.exception.ExistStorageException;
 import com.github.alexyekymov.cvdb.exception.NotExistStorageException;
-import com.github.alexyekymov.cvdb.exception.StorageException;
 import com.github.alexyekymov.cvdb.model.Resume;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class AbstractStorageTest {
-    private Storage storage;
+    protected Storage storage;
 
     private static final String UUID_1 = "uuid1";
     private static final String UUID_2 = "uuid2";
@@ -84,18 +82,6 @@ public class AbstractStorageTest {
     @Test(expected = ExistStorageException.class)
     public void saveExist() {
         storage.save(RESUME_1);
-    }
-
-    @Test(expected = StorageException.class)
-    public void saveOverflow() {
-        try {
-            for (int i = 4; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
-                storage.save(new Resume());
-            }
-        } catch (StorageException e) {
-            fail();
-        }
-        storage.save(new Resume());
     }
 
     @Test(expected = NotExistStorageException.class)
