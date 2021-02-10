@@ -1,0 +1,9 @@
+package com.github.alexyekymov.cvdb.storage;
+
+import static org.junit.Assert.*;
+
+public class MapResumeStorageTest extends AbstractStorageTest {
+    public MapResumeStorageTest() {
+        super(new MapResumeStorage());
+    }
+}
