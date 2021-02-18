@@ -1,15 +1,17 @@
 package com.github.alexyekymov.cvdb.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Resume implements Comparable<Resume> {
+public class Resume implements Comparable<Resume>, Serializable {
+    private static final long serialVersionUID = 1L;
 
     private final String uuid;
 
-    private String fullName;
+    private final String fullName;
 
     private final Map<ContactType, String> contacts = new HashMap<>();
     private final Map<SectionType, Section> sections = new HashMap<>();

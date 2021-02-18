@@ -1,4 +1,6 @@
 package com.github.alexyekymov.cvdb.model;
 
-abstract class Section {
+import java.io.Serializable;
+
+abstract class Section implements Serializable {
 }
