@@ -10,10 +10,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.github.alexyekymov.cvdb.storage.ResumeTestData.*;
+import static com.github.alexyekymov.cvdb.util.ResumeTestData.*;
 import static org.junit.Assert.assertEquals;
 
-public class AbstractStorageTest {
+public abstract class AbstractStorageTest {
     protected static final File STORAGE_DIR = new File("/home/alex/projects/storage");
 
     protected Storage storage;

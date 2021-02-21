@@ -1,6 +1,7 @@
-package com.github.alexyekymov.cvdb.storage;
+package com.github.alexyekymov.cvdb.util;
 
 import com.github.alexyekymov.cvdb.model.*;
+import com.github.alexyekymov.cvdb.storage.Storage;
 
 import java.time.Month;
 
