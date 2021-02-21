@@ -2,13 +2,18 @@ package com.github.alexyekymov.cvdb.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ListSection extends Section {
     private static final long serialVersionUID = 1L;
 
-    private final List<String> items;
+    private List<String> items;
+
+    public ListSection() {
+    }
 
     public ListSection(List<String> items) {
+        Objects.requireNonNull(items, "items must not be null");
         this.items = items;
     }
 
@@ -37,6 +42,6 @@ public class ListSection extends Section {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return items.hashCode();
     }
 }
