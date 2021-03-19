@@ -1,5 +1,6 @@
 package com.github.alexyekymov.cvdb.storage;
 
+import com.github.alexyekymov.cvdb.Config;
 import com.github.alexyekymov.cvdb.exception.ExistStorageException;
 import com.github.alexyekymov.cvdb.exception.NotExistStorageException;
 import com.github.alexyekymov.cvdb.model.Resume;
@@ -14,7 +15,7 @@ import static com.github.alexyekymov.cvdb.util.ResumeTestData.*;
 import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractStorageTest {
-    protected static final File STORAGE_DIR = new File("/home/alex/projects/storage");
+    protected static final File STORAGE_DIR = Config.get().getStorageDir();
 
     protected Storage storage;
 
