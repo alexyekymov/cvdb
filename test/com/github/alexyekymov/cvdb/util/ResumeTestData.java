@@ -4,12 +4,13 @@ import com.github.alexyekymov.cvdb.model.*;
 import com.github.alexyekymov.cvdb.storage.Storage;
 
 import java.time.Month;
+import java.util.UUID;
 
 public class ResumeTestData {
-    public static final String UUID_1 = "uuid1";
-    public static final String UUID_2 = "uuid2";
-    public static final String UUID_3 = "uuid3";
-    public static final String UUID_4 = "uuid4";
+    public static final String UUID_1 = UUID.randomUUID().toString();
+    public static final String UUID_2 = UUID.randomUUID().toString();
+    public static final String UUID_3 = UUID.randomUUID().toString();
+    public static final String UUID_4 = UUID.randomUUID().toString();
 
     public static final Resume R1;
     public static final Resume R2;
@@ -22,7 +23,7 @@ public class ResumeTestData {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
-        R1.addContact(ContactType.MAIL, "mail1@google.com");
+        /*R1.addContact(ContactType.MAIL, "mail1@google.com");
         R1.addContact(ContactType.PHONE, "12345");
         R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
         R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
@@ -45,7 +46,7 @@ public class ResumeTestData {
         R2.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("Organization2", "http://organization2.com",
-                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
+                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));*/
     }
 
     public static void refill(Storage storage) {

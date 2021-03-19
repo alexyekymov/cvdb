@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.github.alexyekymov.cvdb.util.ResumeTestData.*;
@@ -55,7 +56,9 @@ public abstract class AbstractStorageTest {
     public void getAllSorted() {
         List<Resume> list = storage.getAllSorted();
         assertEquals(3, list.size());
-        assertEquals(Arrays.asList(R1, R2, R3), list);
+        List<Resume> sortedResume = Arrays.asList(R1, R2, R3);
+        Collections.sort(sortedResume);
+        assertEquals(sortedResume, list);
     }
 
     @Test
