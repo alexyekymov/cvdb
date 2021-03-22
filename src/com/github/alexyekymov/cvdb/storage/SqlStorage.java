@@ -1,6 +1,7 @@
 package com.github.alexyekymov.cvdb.storage;
 
 import com.github.alexyekymov.cvdb.exception.NotExistStorageException;
+import com.github.alexyekymov.cvdb.model.ContactType;
 import com.github.alexyekymov.cvdb.model.Resume;
 import com.github.alexyekymov.cvdb.sql.SqlHelper;
 
@@ -8,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SqlStorage implements Storage {
     public final SqlHelper sqlHelper;
@@ -41,18 +43,37 @@ public class SqlStorage implements Storage {
             ps.execute();
             return null;
         });
+        for (Map.Entry<ContactType, String> e : resume.getContacts().entrySet()) {
+            sqlHelper.<Void>execute("INSERT INTO contact (resume_uuid, type, value) VALUES (?,?,?)",
+                    ps -> {
+                        ps.setString(1, resume.getUuid());
+                        ps.setString(2, e.getKey().name());
+                        ps.setString(3, e.getValue());
+                        return null;
+                    });
+        }
     }
 
     @Override
     public Resume get(String uuid) {
-        return sqlHelper.execute("SELECT * FROM resume WHERE resume.uuid =?", ps -> {
-            ps.setString(1, uuid);
-            ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                throw new NotExistStorageException(uuid);
-            }
-            return new Resume(uuid, rs.getString("full_name"));
-        });
+        return sqlHelper.execute("SELECT * FROM resume " +
+                        "LEFT JOIN contact " +
+                        "ON resume.uuid = contact.uuid " +
+                        "WHERE resume.uuid = ?",
+                ps -> {
+                    ps.setString(1, uuid);
+                    ResultSet rs = ps.executeQuery();
+                    if (!rs.next()) {
+                        throw new NotExistStorageException(uuid);
+                    }
+                    Resume resume = new Resume(uuid, rs.getString("full_name"));
+                    do {
+                        String value = rs.getString("value");
+                        ContactType type = ContactType.valueOf(rs.getString("value"));
+                        resume.addContact(type, value);
+                    } while (rs.next());
+                    return resume;
+                });
     }
 
     @Override
