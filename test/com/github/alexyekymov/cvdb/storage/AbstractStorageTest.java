@@ -3,6 +3,7 @@ package com.github.alexyekymov.cvdb.storage;
 import com.github.alexyekymov.cvdb.Config;
 import com.github.alexyekymov.cvdb.exception.ExistStorageException;
 import com.github.alexyekymov.cvdb.exception.NotExistStorageException;
+import com.github.alexyekymov.cvdb.model.ContactType;
 import com.github.alexyekymov.cvdb.model.Resume;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,6 +44,8 @@ public abstract class AbstractStorageTest {
     @Test
     public void update() {
         Resume newResume = new Resume(UUID_1, "New Name");
+        R1.addContact(ContactType.MAIL, "mail1@google.com");
+        R1.addContact(ContactType.SKYPE, "NewSkype");
         storage.update(newResume);
         assertEquals(storage.get(UUID_1), newResume);
     }

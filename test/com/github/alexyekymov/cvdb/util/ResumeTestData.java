@@ -23,8 +23,12 @@ public class ResumeTestData {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
-        /*R1.addContact(ContactType.MAIL, "mail1@google.com");
+        R1.addContact(ContactType.MAIL, "mail1@google.com");
         R1.addContact(ContactType.PHONE, "12345");
+
+        R4.addContact(ContactType.PHONE, "11111");
+        R4.addContact(ContactType.SKYPE, "theBestFileHosting");
+        /*
         R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
         R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
         R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achievement1", "Achievement2", "Achievement3"));
@@ -46,7 +50,8 @@ public class ResumeTestData {
         R2.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("Organization2", "http://organization2.com",
-                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));*/
+                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
+        */
     }
 
     public static void refill(Storage storage) {
