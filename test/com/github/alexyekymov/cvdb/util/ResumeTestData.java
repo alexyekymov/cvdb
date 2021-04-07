@@ -28,7 +28,7 @@ public class ResumeTestData {
 
         R4.addContact(ContactType.PHONE, "11111");
         R4.addContact(ContactType.SKYPE, "theBestFileHosting");
-        /*
+
         R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
         R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
         R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achievement1", "Achievement2", "Achievement3"));
@@ -51,13 +51,5 @@ public class ResumeTestData {
                 new OrganizationSection(
                         new Organization("Organization2", "http://organization2.com",
                                 new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
-        */
-    }
-
-    public static void refill(Storage storage) {
-        storage.clear();
-        storage.save(R1);
-        storage.save(R2);
-        storage.save(R3);
     }
 }
