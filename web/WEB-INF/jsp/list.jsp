@@ -5,10 +5,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html charset=UTF-8">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>List of resumes</title>
 </head>
 <body>
+<jsp:include page="fragments/header.jsp"/>
+<br>
 <section>
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
@@ -20,7 +22,8 @@
         %>
         <tr>
             <td>
-                <a href="resume?uuid=<%=resume.getUuid()%>"><%=resume.getFullName()%></a>
+                <a href="resume?uuid=<%=resume.getUuid()%>"><%=resume.getFullName()%>
+                </a>
             </td>
             <td>
                 <%=resume.getContact(ContactType.MAIL)%>
@@ -30,6 +33,7 @@
             }
         %>
     </table>
+    <jsp:include page="fragments/footer.jsp"/>
 </section>
 </body>
 </html>
