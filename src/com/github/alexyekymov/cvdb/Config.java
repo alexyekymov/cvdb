@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
-    private static final File PROPS = new File(getHomeDir(), "/projects/cvdb/config/resumes.properties");
+    private static final File PROPS = new File(getHomeDir(), "/config/resumes.properties");
     private static final Config INSTANCE = new Config();
 
     private final File storageDir;
@@ -41,7 +41,7 @@ public class Config {
     }
 
     private static File getHomeDir() {
-        String prop = System.getProperty("user.home");
+        String prop = System.getenv("HOMEDIR");
         File homeDir = new File(prop == null ? "." : prop);
         if (!homeDir.isDirectory()) {
             throw new IllegalStateException(homeDir + " is not a directory");
