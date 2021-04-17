@@ -1,7 +1,6 @@
 package com.github.alexyekymov.cvdb.util;
 
 import com.github.alexyekymov.cvdb.model.*;
-import com.github.alexyekymov.cvdb.storage.Storage;
 
 import java.time.Month;
 import java.util.UUID;
@@ -23,31 +22,31 @@ public class ResumeTestData {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
-        R1.addContact(ContactType.MAIL, "mail1@google.com");
-        R1.addContact(ContactType.PHONE, "12345");
+        R1.setContact(ContactType.MAIL, "mail1@google.com");
+        R1.setContact(ContactType.PHONE, "12345");
 
-        R4.addContact(ContactType.PHONE, "11111");
-        R4.addContact(ContactType.SKYPE, "theBestFileHosting");
+        R4.setContact(ContactType.PHONE, "11111");
+        R4.setContact(ContactType.SKYPE, "theBestFileHosting");
 
-        R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
-        R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
-        R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achievement1", "Achievement2", "Achievement3"));
-        R1.addSection(SectionType.QUALIFICATION, new ListSection("Java", "SQL", "JS"));
-        R1.addSection(SectionType.EXPERIENCE,
+        R1.setSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
+        R1.setSection(SectionType.PERSONAL, new TextSection("Personal data"));
+        R1.setSection(SectionType.ACHIEVEMENT, new ListSection("Achievement1", "Achievement2", "Achievement3"));
+        R1.setSection(SectionType.QUALIFICATION, new ListSection("Java", "SQL", "JS"));
+        R1.setSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("Organization1", "http://organization1.com",
                                 new Organization.Position(2005, Month.JANUARY, "Position1", "content1"),
                                 new Organization.Position(2001, Month.MARCH, 2005, Month.JANUARY, "Position2", "content2")
                         )));
-        R1.addSection(SectionType.EDUCATION,
+        R1.setSection(SectionType.EDUCATION,
                 new OrganizationSection(
                         new Organization("Institute", "http://institute1.gov",
                                 new Organization.Position(1996, Month.JANUARY, 2000, Month.DECEMBER, "aspirant", null),
                                 new Organization.Position(2001, Month.MARCH, 2005, Month.JANUARY, "Student", "Computer science")),
                         new Organization("College", "http://college1.gov")));
-        R2.addContact(ContactType.SKYPE, "skype1");
-        R2.addContact(ContactType.PHONE, "54321");
-        R2.addSection(SectionType.EXPERIENCE,
+        R2.setContact(ContactType.SKYPE, "skype1");
+        R2.setContact(ContactType.PHONE, "54321");
+        R2.setSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("Organization2", "http://organization2.com",
                                 new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));

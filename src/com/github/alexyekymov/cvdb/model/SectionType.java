@@ -1,8 +1,8 @@
 package com.github.alexyekymov.cvdb.model;
 
 public enum SectionType {
+    OBJECTIVE("Position"),
     PERSONAL("Personal skills"),
-    OBJECTIVE("Objectives"),
     ACHIEVEMENT("Achievements"),
     QUALIFICATION("Qualification"),
     EXPERIENCE("Work history"),
