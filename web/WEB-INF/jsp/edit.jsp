@@ -41,9 +41,8 @@
                     <textarea name="${type}" cols="75" rows="5"><%=section%></textarea>
                 </c:when>
                 <c:when test="${type=='QUALIFICATION' || type=='ACHIEVEMENT'}">
-                    <textarea name="${type}" cols="75" rows="5">
-                        <%=String.join("\n", ((ListSection) section).getItems())%>
-                    </textarea>
+                    <textarea name="${type}" cols="75"
+                              rows="5"><%=String.join("\n", ((ListSection) section).getItems())%></textarea>
                 </c:when>
                 <c:when test="${type=='EXPERIENCE' || type=='EDUCATION'}">
                     <c:forEach var="org" items="<%=((OrganizationSection) section).getOrganizations()%>"
@@ -82,9 +81,8 @@
                                 </dl>
                                 <dl>
                                     <dt>Description:</dt>
-                                    <dd><textarea name="${type}${counter.index}description" cols="75" rows="5">
-                                        ${pos.description}
-                                    </textarea>
+                                    <dd><textarea name="${type}${counter.index}description" cols="75"
+                                                  rows="5">${pos.description}</textarea>
                                     </dd>
                                 </dl>
                             </c:forEach>
@@ -92,10 +90,7 @@
                     </c:forEach>
                 </c:when>
             </c:choose>
-
         </c:forEach>
-
-
         <button type="submit">Save</button>
         <button onclick="window.history.back()">Cancel</button>
     </form>

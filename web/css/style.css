@@ -8,6 +8,7 @@ header {
     color: #2E6E9E;
     font-size: 20px;
     padding: 5px 20px;
+    text-align: center;
 }
 
 footer {
@@ -20,6 +21,12 @@ footer {
 }
 
 dl {
+    background: none repeat scroll 0 0 #FAFAFA;
+    margin: 8px 0;
+    padding: 0;
+}
+
+dt {
     display: inline-block;
     width: 170px;
 }
