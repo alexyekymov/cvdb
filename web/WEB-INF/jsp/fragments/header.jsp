@@ -1,4 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
-    Resume management
+    <a href="resume">Resume management</a>
 </header>

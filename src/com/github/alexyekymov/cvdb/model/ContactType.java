@@ -18,25 +18,25 @@ public enum ContactType {
     },
     LINKEDIN("Linkedin profile") {
         @Override
-        public String toLink(String href) {
+        public String toHtml0(String href) {
             return toLink(href);
         }
     },
     GITHUB("Github profile") {
         @Override
-        public String toLink(String href) {
+        public String toHtml0(String href) {
             return toLink(href);
         }
     },
     STACKOVERFLOW("Stackoverflow profile") {
         @Override
-        public String toLink(String href) {
+        public String toHtml0(String href) {
             return toLink(href);
         }
     },
     HOME_PAGE("Home page") {
         @Override
-        public String toLink(String href) {
+        public String toHtml0(String href) {
             return toLink(href);
         }
     };
