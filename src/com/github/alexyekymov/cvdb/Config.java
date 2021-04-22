@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
-    private static final String PROPS = "resumes.properties";
+    private static final String PROPS = "/resumes.properties";
     private static final Config INSTANCE = new Config();
 
     private final File storageDir;
@@ -27,7 +27,7 @@ public class Config {
             storage = new SqlStorage(props.getProperty("db.url"), props.getProperty("db.user"),
                     props.getProperty("db.password"));
         } catch (IOException e) {
-            throw new IllegalArgumentException("Invalid config file " + PROPS);
+            throw new IllegalStateException("Invalid config file " + PROPS);
         }
     }
 
